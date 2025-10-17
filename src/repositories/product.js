@@ -2,6 +2,20 @@ import {prisma} from "../services/db.js";
 import {NotFoundError} from "../utils/errors.js";
 
 export const ProductRepository = {
+    getProducts: async function (page, limit) {
+        const intPage = parseInt(page);
+        const intLimit = parseInt(limit);
+        if (isNaN(intPage) || intPage < 1) {
+            throw new Error("Invalid page number");
+        }
+        if (isNaN(intLimit) || intLimit < 1) {
+            throw new Error("Invalid limit number");
+        }
+        return prisma.products.findMany({
+            skip: (intPage - 1) * intLimit,
+            take: intLimit,
+        });
+    },
     getProduct: async function (productId) {
         const product = prisma.products.findUnique({
             where: { id: parseInt(productId) }

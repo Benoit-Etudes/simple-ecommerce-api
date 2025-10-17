@@ -8,6 +8,7 @@ import {registerAuthRoutes} from "./src/controllers/auth.js";
 import {registerAuthMiddlewares} from "./src/middlewares/auth.js";
 import {registerUserRoutes} from "./src/controllers/user.js";
 import {registerErrorMiddleware} from "./src/middlewares/error.js";
+import {registerProductRoutes} from "./src/controllers/product.js";
 
 dotenv.config();
 
@@ -61,8 +62,9 @@ fastify.get("/", async function handler(request, reply) {
 registerAuthMiddlewares(fastify);
 registerErrorMiddleware(fastify);
 
-registerUserRoutes(fastify);
 registerAuthRoutes(fastify);
+registerUserRoutes(fastify);
+registerProductRoutes(fastify);
 
 console.log("Environment:", process.env.NODE_ENV, 'Host:', process.env.HOST, 'Port:', process.env.PORT);
 
