@@ -1,6 +1,6 @@
 import {createHash} from "crypto";
 import {UserRepository} from '../repositories/user.js';
-import {CreateUserDto, DeleteUserDto, GetUserDto, GetUsersDto, UpdateUserDto} from "../dto/UserDtos.js";
+import {CreateUserDto, DeleteUserDto, GetUserDto, UpdateUserDto} from "../dto/UserDtos.js";
 import {UserService} from "../services/user.js";
 
 export function registerUserRoutes(fastify) {
